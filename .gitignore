@@ -9,4 +9,4 @@ pom.xml.asc
 /.nrepl-port
 .DS_Store
 hide*
-.git*
+.gitignore
