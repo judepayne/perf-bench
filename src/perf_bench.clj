@@ -7,12 +7,28 @@
 ;;****************************************************************************
 
 (defmacro bench
-  "returns time in ms required to run the supplied function on
+  "Times the execution of forms, discarding their output and returning
+  time in miliseconds."
+  ([& forms]
+    `(let [start# (System/nanoTime)]
+       ~@forms
+       (/ (double ( - (System/nanoTime) start#)) 1000000.0))))
+
+(defmacro bench-times
+  "returns time in ms required to run the supplied functions on
    average over the number of iterations"
-  [expr its]
-  `(let [start# (. System (nanoTime))
-         ret# (dotimes [n# ~its] ~expr)]
+  [its & forms]
+  `(let [start# (. System (nanoTime))]
+     (dotimes [n# ~its] ~@forms)
      (/ (double (- (. System (nanoTime)) start#)) (* 1000000.0 ~its))))
+
+(defmacro bench-collect
+  "Times the execution of forms, returning vector of time in miliseconds
+  then results of executing the forms "
+  [& forms]
+  `(let [start# (. System (nanoTime))
+         ret# ~@forms]
+     [(/ (double (- (. System (nanoTime)) start#)) 1000000.0) ret#]))
 
 (defn- median [xs]
   (let [xs (sort xs)
