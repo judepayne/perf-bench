@@ -1,4 +1,4 @@
-(defproject perf-bench/perf-bench "0.1.4"
+(defproject perf-bench/perf-bench "0.1.5"
   :description "mini IO performance benchmarking library for Clojure"
   :url "http://github.com/judepayne/perf-bench"
   :scm {:name "git"

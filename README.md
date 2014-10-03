@@ -6,13 +6,13 @@ A clojure library for performance benchmarking IO type operations. e.g. database
 
 add to your project.clj
 
-    [perf-bench "0.1.4"]
+    [perf-bench "0.1.5"]
 
 use in code
 
     ...(:require [perf-bench :as b])...
 
-Use the `bench` macro which takes as arguments a function and a number of iterations to run the function to measure average time taken by the function in ms (miliseconds)
+Use the one of the bench-marking macros which takes as arguments a function and a number of iterations to run the function to measure average time taken by the function in ms (miliseconds)
 
 Say you benchmark a thousand writes to disk and have a vector called my-times of a thousand numbers in ms, you can then call:
 
