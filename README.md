@@ -6,7 +6,7 @@ A clojure library for performance benchmarking IO type operations. e.g. database
 
 add to your project.clj
 
-    [perf-bench "0.1.6"]
+    [perf-bench "0.1.7"]
 
 use in code
 
