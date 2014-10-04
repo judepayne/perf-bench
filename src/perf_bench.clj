@@ -6,6 +6,9 @@
 ;;                                                                          ;;
 ;;****************************************************************************
 
+(defmacro collect-all [& forms]
+  `(vector ~@forms))
+
 (defmacro bench
   "Times the execution of forms, discarding their output and returning
   time in miliseconds."
@@ -27,8 +30,8 @@
   then results of executing the forms "
   [& forms]
   `(let [start# (. System (nanoTime))
-         ret# ~@forms]
-     [(/ (double (- (. System (nanoTime)) start#)) 1000000.0) ret#]))
+         ret# (vector ~@forms)]
+     (vec (flatten [(/ (double (- (. System (nanoTime)) start#)) 1000000.0) ret#]))))
 
 (defn- median [xs]
   (let [xs (sort xs)
