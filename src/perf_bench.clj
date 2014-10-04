@@ -6,9 +6,6 @@
 ;;                                                                          ;;
 ;;****************************************************************************
 
-(defmacro collect-all [& forms]
-  `(vector ~@forms))
-
 (defmacro bench
   "Times the execution of forms, discarding their output and returning
   time in miliseconds."
